@@ -1,17 +1,20 @@
 #!groovy 
 
 node {
-   stage 'Checkout'
+   stage ('Checkout'){
         checkout scm
+   }
 
-   stage 'Setup'
+   stage ('Setup'){
         sh 'npm install'
-
-   stage 'Mocha test'
+   }
+   stage ('Mocha test'){
         sh './node_modules/mocha/bin/mocha'
-
-   stage 'Cleanup'
+   }
+   stage ('Cleanup'){
         echo 'prune and cleanup'
         sh 'npm prune'
         sh 'rm node_modules -rf'
+   }
 }
+
