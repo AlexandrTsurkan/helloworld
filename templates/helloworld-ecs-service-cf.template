@@ -46,7 +46,7 @@
                                             "Fn::Split": [
                                                 "-",
                                                 {
-                                                    "Ref": "AWS::StackName"
+                                                    "staging"
                                                 }
                                             ]
                                         }
@@ -62,29 +62,7 @@
                     {
                         "ContainerName": "helloworld",
                         "ContainerPort": 3000,
-                        "TargetGroupArn": {
-                            "Fn::ImportValue": {
-                                "Fn::Join": [
-                                    "-",
-                                    [
-                                        {
-                                            "Fn::Select": [
-                                                0,
-                                                {
-                                                    "Fn::Split": [
-                                                        "-",
-                                                        {
-                                                            "Ref": "AWS::StackName"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        "alb-helloworld-target-group"
-                                    ]
-                                ]
-                            }
-                        }
+                        "TargetGroupArn":"staging-alb-target-group"
                     }
                 ],
                 "Role": {
